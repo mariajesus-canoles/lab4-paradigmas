@@ -5,14 +5,17 @@
  */
 package lab4;
 
-import javax.swing.*;
+ import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+//import javax.swing.*;
 
 /**
  *
  * @author mariajesuscanoles
  */
 public class Lab4 {
-
     /**
      * @param args the command line arguments
      */
@@ -28,11 +31,13 @@ public class Lab4 {
 class miMarco extends JFrame{
     
     public miMarco(){
-        //setSize(500,300);
-        //setLocation(500,300);
-        setBounds(500,300,550,250);
-        //setResizable(false);
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        Toolkit miPantalla = Toolkit.getDefaultToolkit();
+        Dimension tamanoPantalla = miPantalla.getScreenSize();
+        int alturaPantalla = tamanoPantalla.height;
+        int anchoPantalla = tamanoPantalla.width;
+        setSize(anchoPantalla/2,alturaPantalla/2);
+        setLocation(anchoPantalla/4, alturaPantalla/4);
         setTitle("Mi git");
+        
     }
 }
