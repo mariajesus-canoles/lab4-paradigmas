@@ -59,7 +59,7 @@ public class Interfaz extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
 
         workspace.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         workspace.setText("WORKSPACE");
@@ -94,9 +94,19 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
 
         commit.setText("Commit");
+        commit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commitActionPerformed(evt);
+            }
+        });
         getContentPane().add(commit, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
 
         nuevoArchivo.setText("Nuevo Archivo");
+        nuevoArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoArchivoActionPerformed(evt);
+            }
+        });
         getContentPane().add(nuevoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
 
         pull.setText("Pull");
@@ -146,10 +156,24 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        GitAdd add = new GitInit();
-        init.setVisible(true);
+        GitAdd add = new GitAdd();
+        add.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addActionPerformed
+
+    private void commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitActionPerformed
+        // TODO add your handling code here:
+        GitCommit commit = new GitCommit();
+        commit.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_commitActionPerformed
+
+    private void nuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArchivoActionPerformed
+        // TODO add your handling code here:
+        CrearArchivo archivo = new CrearArchivo();
+        archivo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_nuevoArchivoActionPerformed
 
     /**
      * @param args the command line arguments
