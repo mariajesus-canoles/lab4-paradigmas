@@ -5,13 +5,16 @@
  */
 package ventanas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mariajesuscanoles
  */
 public class Interfaz extends javax.swing.JFrame {
     
-
+    Repositorio repositorio;
+    
     /**
      * Creates new form Interfaz
      */
@@ -20,6 +23,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,13 +45,15 @@ public class Interfaz extends javax.swing.JFrame {
         pull = new javax.swing.JButton();
         push = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        zona4 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        zona3 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        zona2 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        zona1 = new javax.swing.JTextArea();
+        log = new javax.swing.JButton();
+        branch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -59,85 +65,119 @@ public class Interfaz extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, -1, -1));
 
-        workspace.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        workspace.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
         workspace.setText("WORKSPACE");
-        getContentPane().add(workspace, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
+        getContentPane().add(workspace, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
-        index.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        index.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
         index.setText("INDEX");
-        getContentPane().add(index, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+        getContentPane().add(index, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-        localRepository.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        localRepository.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
         localRepository.setText("LOCAL REPOSITORY");
-        getContentPane().add(localRepository, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, -1, -1));
+        getContentPane().add(localRepository, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
-        remoteRepository.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        remoteRepository.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
         remoteRepository.setText("REMOTE REPOSITORY");
-        getContentPane().add(remoteRepository, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, -1));
+        getContentPane().add(remoteRepository, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, 20));
 
+        init.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         init.setText("Init");
         init.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initActionPerformed(evt);
             }
         });
-        getContentPane().add(init, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+        getContentPane().add(init, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, -1, -1));
 
+        add.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         add.setText("Add");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
-        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, -1, -1));
 
+        commit.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         commit.setText("Commit");
         commit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 commitActionPerformed(evt);
             }
         });
-        getContentPane().add(commit, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
+        getContentPane().add(commit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
 
+        nuevoArchivo.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         nuevoArchivo.setText("Nuevo Archivo");
         nuevoArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(nuevoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
+        getContentPane().add(nuevoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, -1, -1));
 
+        pull.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         pull.setText("Pull");
-        getContentPane().add(pull, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, -1, -1));
+        pull.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pullActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pull, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 600, -1, -1));
 
+        push.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         push.setText("Push");
-        getContentPane().add(push, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, -1, -1));
+        push.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pushActionPerformed(evt);
+            }
+        });
+        getContentPane().add(push, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 600, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        zona4.setColumns(20);
+        zona4.setRows(5);
+        jScrollPane1.setViewportView(zona4);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 140, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 450, 90));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        zona3.setColumns(20);
+        zona3.setRows(5);
+        jScrollPane2.setViewportView(zona3);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 140, 260));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 450, 90));
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        zona2.setColumns(20);
+        zona2.setRows(5);
+        jScrollPane3.setViewportView(zona2);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 140, 260));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 450, 90));
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        zona1.setColumns(20);
+        zona1.setRows(5);
+        jScrollPane4.setViewportView(zona1);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 140, 260));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 450, 90));
+
+        log.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        log.setText("Log");
+        log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logActionPerformed(evt);
+            }
+        });
+        getContentPane().add(log, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, -1, -1));
+
+        branch.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        branch.setText("Branch");
+        branch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                branchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,33 +188,109 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initActionPerformed
-        // TODO add your handling code here:
         GitInit init = new GitInit();
+        init.repositorio = this.repositorio;
         init.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_initActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
-        GitAdd add = new GitAdd();
-        add.setVisible(true);
-        this.setVisible(false);
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.workspace.archivos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin archivos en el Workspace","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            GitAdd add = new GitAdd();
+            add.repositorio = this.repositorio;
+            add.setVisible(true);
+            this.setVisible(false); 
+        } 
     }//GEN-LAST:event_addActionPerformed
 
     private void commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitActionPerformed
-        // TODO add your handling code here:
-        GitCommit commit = new GitCommit();
-        commit.setVisible(true);
-        this.setVisible(false);
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.index.archivos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin archivos en el Index","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            GitCommit commit = new GitCommit();
+            commit.repositorio = this.repositorio;
+            commit.setVisible(true);
+            this.setVisible(false); 
+        } 
     }//GEN-LAST:event_commitActionPerformed
 
     private void nuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArchivoActionPerformed
-        // TODO add your handling code here:
-        CrearArchivo archivo = new CrearArchivo();
-        archivo.setVisible(true);
-        this.setVisible(false);
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            CrearArchivo archivo = new CrearArchivo();
+            archivo.repositorio = this.repositorio;
+            archivo.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_nuevoArchivoActionPerformed
 
+    private void pullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pullActionPerformed
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.remote.commits.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin commits en el Remote","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            this.repositorio.gitPull();
+            this.zona1.setText(this.repositorio.workspace.toString());
+            this.zona2.setText(this.repositorio.index.toString());
+            this.zona3.setText(this.repositorio.local.toString());
+            this.zona4.setText(this.repositorio.remote.toString());
+        }
+    }//GEN-LAST:event_pullActionPerformed
+
+    private void pushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushActionPerformed
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.local.commits.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin commits en el Local","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            this.repositorio.gitPush();
+            this.zona1.setText(this.repositorio.workspace.toString());
+            this.zona2.setText(this.repositorio.index.toString());
+            this.zona3.setText(this.repositorio.local.toString());
+            this.zona4.setText(this.repositorio.remote.toString());
+        }    
+    }//GEN-LAST:event_pushActionPerformed
+    
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
+        GitLog log = new GitLog();
+        log.repositorio = this.repositorio;
+        log.informacion.setText(this.repositorio.gitLog());
+        log.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logActionPerformed
+
+    private void branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchActionPerformed
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.index.archivos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin archivos en el Index","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            GitBranch branch = new GitBranch();
+            branch.repositorio = this.repositorio;
+            branch.setVisible(true);
+            this.setVisible(false); 
+        } 
+    }//GEN-LAST:event_branchActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -212,6 +328,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton branch;
     private javax.swing.JButton commit;
     private javax.swing.JLabel index;
     private javax.swing.JButton init;
@@ -219,16 +336,17 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JLabel localRepository;
+    private javax.swing.JButton log;
     private javax.swing.JButton nuevoArchivo;
     private javax.swing.JButton pull;
     private javax.swing.JButton push;
     private javax.swing.JLabel remoteRepository;
     private javax.swing.JButton salir;
     private javax.swing.JLabel workspace;
+    public javax.swing.JTextArea zona1;
+    public javax.swing.JTextArea zona2;
+    public javax.swing.JTextArea zona3;
+    public javax.swing.JTextArea zona4;
     // End of variables declaration//GEN-END:variables
 }

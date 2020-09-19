@@ -10,7 +10,11 @@ package ventanas;
  * @author mariajesuscanoles
  */
 public class GitAdd extends javax.swing.JFrame {
-
+    
+    String archivosAdd;
+    Repositorio repositorio;
+    Interfaz interfaz = new Interfaz();
+    
     /**
      * Creates new form GitAdd
      */
@@ -28,25 +32,30 @@ public class GitAdd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Aceptar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        archivos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VolverActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Ingrese los archivos que desea agregar al Index, ");
 
-        jButton2.setText("Aceptar");
+        Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("en caso de querer agregar todos los archivos");
 
@@ -64,19 +73,19 @@ public class GitAdd extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(archivos, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(jButton2)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addComponent(Aceptar)))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(Volver))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(Volver)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -84,21 +93,38 @@ public class GitAdd extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(archivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(Aceptar)
                 .addGap(0, 32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    Interfaz interfaz = new Interfaz();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        interfaz.repositorio = this.repositorio;
+        interfaz.zona1.setText(this.repositorio.workspace.toString());
+        interfaz.zona2.setText(this.repositorio.index.toString());
+        interfaz.zona3.setText(this.repositorio.local.toString());
+        interfaz.zona4.setText(this.repositorio.remote.toString());
         interfaz.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        // TODO add your handling code here:
+        this.archivosAdd = archivos.getText();
+        this.repositorio.gitAdd(archivosAdd);
+        interfaz.repositorio = this.repositorio;
+        interfaz.zona1.setText(this.repositorio.workspace.toString());
+        interfaz.zona2.setText(this.repositorio.index.toString());
+        interfaz.zona3.setText(this.repositorio.local.toString());
+        interfaz.zona4.setText(this.repositorio.remote.toString());
+        interfaz.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,11 +162,11 @@ public class GitAdd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Volver;
+    private javax.swing.JTextField archivos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

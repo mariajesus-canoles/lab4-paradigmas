@@ -10,7 +10,11 @@ package ventanas;
  * @author mariajesuscanoles
  */
 public class GitCommit extends javax.swing.JFrame {
-
+    
+    String mensajeCommit;
+    Repositorio repositorio;
+    Interfaz interfaz = new Interfaz();
+    
     /**
      * Creates new form GitCommit
      */
@@ -28,29 +32,28 @@ public class GitCommit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        mensaje = new javax.swing.JTextField();
+        Aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VolverActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Ingrese el mensaje del commit:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                AceptarActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Aceptar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,45 +61,57 @@ public class GitCommit extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(Volver))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
+                            .addComponent(mensaje)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jButton2)))
+                        .addComponent(Aceptar)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(Volver)
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jButton2)
+                .addComponent(Aceptar)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
     
-    Interfaz interfaz = new Interfaz();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        interfaz.repositorio = this.repositorio;
+        interfaz.zona1.setText(this.repositorio.workspace.toString());
+        interfaz.zona2.setText(this.repositorio.index.toString());
+        interfaz.zona3.setText(this.repositorio.local.toString());
+        interfaz.zona4.setText(this.repositorio.remote.toString());
         interfaz.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        this.mensajeCommit = mensaje.getText();
+        this.repositorio.gitCommit(mensajeCommit);
+        interfaz.repositorio = this.repositorio;
+        interfaz.zona1.setText(this.repositorio.workspace.toString());
+        interfaz.zona2.setText(this.repositorio.index.toString());
+        interfaz.zona3.setText(this.repositorio.local.toString());
+        interfaz.zona4.setText(this.repositorio.remote.toString());
+        interfaz.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,9 +149,9 @@ public class GitCommit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField mensaje;
     // End of variables declaration//GEN-END:variables
 }

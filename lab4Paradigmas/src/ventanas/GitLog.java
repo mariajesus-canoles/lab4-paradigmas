@@ -9,17 +9,15 @@ package ventanas;
  *
  * @author mariajesuscanoles
  */
-public class GitInit extends javax.swing.JFrame {
-    
+public class GitLog extends javax.swing.JFrame {
+     
     Repositorio repositorio;
-    String nombreRep;
-    String autorRep;
     Interfaz interfaz = new Interfaz();
 
     /**
-     * Creates new form GitInit
+     * Creates new form GitLog
      */
-    public GitInit() {
+    public GitLog() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -33,25 +31,15 @@ public class GitInit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Volver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        autor = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        informacion = new javax.swing.JTextArea();
         Aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Volver.setText("Volver");
-        Volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Ingrese el autor del Repositorio:");
-
-        jLabel2.setText("Ingrese el nombre del Repositorio:");
+        informacion.setColumns(20);
+        informacion.setRows(5);
+        jScrollPane1.setViewportView(informacion);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -64,61 +52,30 @@ public class GitInit extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Volver))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addGap(203, 203, 203)
                         .addComponent(Aceptar)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Volver)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Aceptar)
-                .addGap(0, 53, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    
-    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        // TODO add your handling code here:
-        interfaz.repositorio = this.repositorio;
-        interfaz.zona1.setText(this.repositorio.workspace.toString());
-        interfaz.zona2.setText(this.repositorio.index.toString());
-        interfaz.zona3.setText(this.repositorio.local.toString());
-        interfaz.zona4.setText(this.repositorio.remote.toString());
-        interfaz.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_VolverActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        // TODO add your handling code here:
-        this.nombreRep = nombre.getText();
-        this.autorRep = autor.getText();
-        this.repositorio = new Repositorio(nombreRep, autorRep); 
         interfaz.repositorio = this.repositorio;
         interfaz.zona1.setText(this.repositorio.workspace.toString());
         interfaz.zona2.setText(this.repositorio.index.toString());
@@ -126,7 +83,6 @@ public class GitInit extends javax.swing.JFrame {
         interfaz.zona4.setText(this.repositorio.remote.toString());
         interfaz.setVisible(true);
         this.setVisible(false);
-        
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**
@@ -146,30 +102,27 @@ public class GitInit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GitInit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GitLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GitInit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GitLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GitInit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GitLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GitInit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GitLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GitInit().setVisible(true);
+                new GitLog().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Volver;
-    private javax.swing.JTextField autor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField nombre;
+    public javax.swing.JTextArea informacion;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
