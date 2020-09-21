@@ -18,7 +18,7 @@ public class GitBranch extends javax.swing.JFrame {
     Interfaz interfaz = new Interfaz();
 
     /**
-     * Creates new form GitBranch
+     * Constructor
      */
     public GitBranch() {
         initComponents();
@@ -101,7 +101,12 @@ public class GitBranch extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal con los cambios efectuados de
+     * realizar un gitBranch
+     * @param evt 
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         this.ramaBranch = rama.getText();
         this.mensajeBranch = mensaje.getText();
@@ -114,7 +119,11 @@ public class GitBranch extends javax.swing.JFrame {
         interfaz.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal
+     * @param evt 
+     */
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         interfaz.repositorio = this.repositorio;
         interfaz.zona1.setText(this.repositorio.workspace.toString());

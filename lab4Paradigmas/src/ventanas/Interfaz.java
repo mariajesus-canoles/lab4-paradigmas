@@ -7,15 +7,16 @@ package ventanas;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista principal del programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class Interfaz extends javax.swing.JFrame {
     
     Repositorio repositorio;
     
     /**
-     * Creates new form Interfaz
+     * Constructor
      */
     public Interfaz() {
         initComponents();
@@ -181,7 +182,10 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    /**
+     * 
+     * @param evt 
+     */
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
@@ -189,6 +193,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git init, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initActionPerformed
         if (this.repositorio == null){
@@ -205,6 +210,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git add, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         if (this.repositorio == null){
@@ -224,6 +230,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git commit, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitActionPerformed
         if (this.repositorio == null){
@@ -243,6 +250,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para crear un archivo, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void nuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArchivoActionPerformed
         if (this.repositorio == null){
@@ -259,6 +267,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git pull, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void pullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pullActionPerformed
         if (this.repositorio == null){
@@ -279,6 +288,7 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git push, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void pushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushActionPerformed
         if (this.repositorio == null){
@@ -299,18 +309,28 @@ public class Interfaz extends javax.swing.JFrame {
     /** 
      * metodo que muestra una ventana para realizar un git log, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
-        GitLog log = new GitLog();
-        log.repositorio = this.repositorio;
-        log.informacion.setText(this.repositorio.gitLog());
-        log.setVisible(true);
-        this.setVisible(false);
+        if (this.repositorio == null){
+            JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (this.repositorio.local.commits.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Sin commits en el Local","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            GitLog log = new GitLog();
+            log.repositorio = this.repositorio;
+            log.informacion.setText(this.repositorio.gitLog());
+            log.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_logActionPerformed
     
     /** 
      * metodo que muestra una ventana para realizar un git branch, en caso
      * que no cumpla para hacerlo, se le informa al usuario
+     * @param evt
      */
     private void branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchActionPerformed
         if (this.repositorio == null){

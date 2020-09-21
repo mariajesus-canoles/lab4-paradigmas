@@ -5,9 +5,11 @@
 package ventanas;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista al momento de realizar un Init en el
+* programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class GitInit extends javax.swing.JFrame {
     
     Repositorio repositorio;
@@ -16,7 +18,7 @@ public class GitInit extends javax.swing.JFrame {
     Interfaz interfaz = new Interfaz();
 
     /**
-     * Creates new form GitInit
+     * Constructor
      */
     public GitInit() {
         initComponents();
@@ -100,13 +102,21 @@ public class GitInit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal
+     * @param evt 
+     */
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         interfaz.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_VolverActionPerformed
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal con los cambios efectuados de
+     * realizar un gitInit
+     * @param evt 
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
         this.nombreRep = nombre.getText();

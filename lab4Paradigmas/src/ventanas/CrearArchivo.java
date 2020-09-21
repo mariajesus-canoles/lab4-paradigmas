@@ -5,16 +5,18 @@
 package ventanas;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista al momento de realizar un Init en el
+* programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class CrearArchivo extends javax.swing.JFrame {
     Repositorio repositorio;
     String nombreArchivo;
     String contenidoArchivo;
     Interfaz interfaz = new Interfaz();
     
-    /** Creates new form CrearArchivo */
+    // Constructor
     public CrearArchivo() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -97,7 +99,10 @@ public class CrearArchivo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal
+     * @param evt 
+     */
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         interfaz.repositorio = this.repositorio;
         interfaz.zona1.setText(this.repositorio.workspace.toString());
@@ -107,7 +112,12 @@ public class CrearArchivo extends javax.swing.JFrame {
         interfaz.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_VolverActionPerformed
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal con los cambios efectuados de
+     * crear un nuevo archivo
+     * @param evt 
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         this.nombreArchivo = nombre.getText();
         this.contenidoArchivo = contenido.getText();

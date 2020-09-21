@@ -5,9 +5,11 @@
 package ventanas;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista al momento de realizar un Add en el
+* programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class GitAdd extends javax.swing.JFrame {
     
     String archivosAdd;
@@ -15,7 +17,7 @@ public class GitAdd extends javax.swing.JFrame {
     Interfaz interfaz = new Interfaz();
     
     /**
-     * Creates new form GitAdd
+     * Constructor
      */
     public GitAdd() {
         initComponents();
@@ -101,7 +103,10 @@ public class GitAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal
+     * @param evt 
+     */
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         interfaz.repositorio = this.repositorio;
         interfaz.zona1.setText(this.repositorio.workspace.toString());
@@ -111,7 +116,12 @@ public class GitAdd extends javax.swing.JFrame {
         interfaz.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_VolverActionPerformed
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal con los cambios efectuados de
+     * realizar un gitAdd
+     * @param evt 
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
         this.archivosAdd = archivos.getText();

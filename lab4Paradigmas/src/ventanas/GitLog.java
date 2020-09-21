@@ -5,16 +5,18 @@
 package ventanas;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista al momento de realizar un Log en el
+* programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class GitLog extends javax.swing.JFrame {
      
     Repositorio repositorio;
     Interfaz interfaz = new Interfaz();
 
     /**
-     * Creates new form GitLog
+     * Constructor
      */
     public GitLog() {
         initComponents();
@@ -73,7 +75,12 @@ public class GitLog extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * metodo que vuelve a mostrar la interfaz principal con los cambios efectuados de
+     * realizar un gitLog
+     * @param evt 
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         interfaz.repositorio = this.repositorio;
         interfaz.zona1.setText(this.repositorio.workspace.toString());
