@@ -1,8 +1,7 @@
 //@author Maria Jesus Canoles
 //Rut 20300159-2
-//Ultimo Edit 06/09/2020
+//Ultimo Edit 20/09/2020
 //@version 1.0
-
 package ventanas;
 
 import java.text.DateFormat;
@@ -29,11 +28,6 @@ class Archivo {
      * @param contenido contenido del archivo
      */
     public Archivo(String nombre, String contenido){
-        /*Scanner input = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del archivo:");
-        String nombre = input.nextLine();
-        System.out.println("Ingrese el contenido del archivo:");
-        String autor = input.nextLine();*/
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date fechaActual = new Date();
         this.nombre = nombre;

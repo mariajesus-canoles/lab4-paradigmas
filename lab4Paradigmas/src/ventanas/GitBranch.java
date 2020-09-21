@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//@author Maria Jesus Canoles
+//Rut 20300159-2
+//Ultimo Edit 20/09/2020
+//@version 1.0
 package ventanas;
 
 /**
- *
- * @author mariajesuscanoles
- */
+* Clase para representar la vista al momento de realizar un Branch en el
+* programa
+* @version 1.8
+* @author Maria Jesus Canoles
+*/
 public class GitBranch extends javax.swing.JFrame {
     
     String ramaBranch;

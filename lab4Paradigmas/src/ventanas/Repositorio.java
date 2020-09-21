@@ -1,6 +1,6 @@
 //@author Maria Jesus Canoles
 //Rut 20300159-2
-//Ultimo Edit 06/09/2020
+//Ultimo Edit 20/09/2020
 //@version 1.0
 package ventanas;
 
@@ -49,6 +49,8 @@ public class Repositorio {
     
     /**
      * metodo que instancia un repositorio a partir de un nombre y autor, con sus zonas vacias
+     * @param nombre nombre del repositorio
+     * @param autor autor del repositorio
      */
     private void gitInit(String nombre, String autor){
         this.nombreRep = nombre;
@@ -61,6 +63,7 @@ public class Repositorio {
     
     /**
      * metodo que agrega archivos del workspace al index
+     * @param archivosAux archivos que se quieren agregar al index
      */
     public void gitAdd(String archivosAux){
         String[] archivos = archivosAux.split(" ");
@@ -82,6 +85,7 @@ public class Repositorio {
     /**
      * metodo que genera un commit con los archivos contenidos en el index 
      * y a partir de un mensaje descriptivo
+     * @param mensaje mensaje del commit
      */
     public void gitCommit(String mensaje){
         Commit commit = new Commit("Master", mensaje, this.index.archivos);
@@ -112,30 +116,11 @@ public class Repositorio {
             }
         }
     }
-    
-    /**
-     * metodo que genera un string con el nombre del repositorio, autor, cantidad de archivos en el
-     * workspace e index, cantidad de commits en el local, e informa si el remote se encuentra al dia
-     * @return informacion sobre el repositorio
-     */
-    public String gitStatus(){
-        String output = "Nombre Repositorio: " + this.nombreRep + "\nAutor Repositorio: " + this.autor 
-                + "\nCantidad archivos en el Workspace: " + this.workspace.archivos.size() 
-                + "\nCantidad archivos en el Index: " + this.index.archivos.size()
-                + "\nCantidad commits en el Local: " + this.local.commits.size();
-                if(this.local.commits.equals(this.remote.commits)){
-                    output = output + "\nRemote se encuentra al dia";
-                }
-                else{
-                    output = output + "\nRemote NO se encuentra al dia";
-                }
-        return output;
-    }
    
     /** 
      * metodo que genera un string con los cinco ultimos commits agregados al local, en caso de existir menos
      * commits, genera el string con los commits respectivos
-     * @return 
+     * @return output que indica el conenido
      */
     public String gitLog(){
         int largo = this.local.commits.size();
@@ -158,6 +143,8 @@ public class Repositorio {
     /**
      * metodo que crea un commit con el nombre de una nueva rama ingresada por el usuario
      * con los archivos contenidos en el index
+     * @param rama rama a crear
+     * @param mensaje mensaje del commit
      */
     public void gitBranch(String rama, String mensaje){
         Commit commit = new Commit(rama, mensaje, this.index.archivos);

@@ -1,8 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//@author Maria Jesus Canoles
+//Rut 20300159-2
+//Ultimo Edit 20/09/2020
+//@version 1.0
 package ventanas;
 
 import javax.swing.JOptionPane;
@@ -181,19 +180,32 @@ public class Interfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git init, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void initActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initActionPerformed
-        GitInit init = new GitInit();
-        init.repositorio = this.repositorio;
-        init.setVisible(true);
-        this.setVisible(false);
+        if (this.repositorio == null){
+            GitInit init = new GitInit();
+            init.repositorio = this.repositorio;
+            init.setVisible(true);
+            this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Ya inicializo su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_initActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git add, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -208,7 +220,11 @@ public class Interfaz extends javax.swing.JFrame {
             this.setVisible(false); 
         } 
     }//GEN-LAST:event_addActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git commit, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -223,7 +239,11 @@ public class Interfaz extends javax.swing.JFrame {
             this.setVisible(false); 
         } 
     }//GEN-LAST:event_commitActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para crear un archivo, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void nuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArchivoActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -235,7 +255,11 @@ public class Interfaz extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_nuevoArchivoActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git pull, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void pullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pullActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -251,7 +275,11 @@ public class Interfaz extends javax.swing.JFrame {
             this.zona4.setText(this.repositorio.remote.toString());
         }
     }//GEN-LAST:event_pullActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git push, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void pushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -268,6 +296,10 @@ public class Interfaz extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_pushActionPerformed
     
+    /** 
+     * metodo que muestra una ventana para realizar un git log, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
         GitLog log = new GitLog();
         log.repositorio = this.repositorio;
@@ -275,7 +307,11 @@ public class Interfaz extends javax.swing.JFrame {
         log.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logActionPerformed
-
+    
+    /** 
+     * metodo que muestra una ventana para realizar un git branch, en caso
+     * que no cumpla para hacerlo, se le informa al usuario
+     */
     private void branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchActionPerformed
         if (this.repositorio == null){
             JOptionPane.showMessageDialog(null,"Debe inicializar su repositorio","ERROR",JOptionPane.ERROR_MESSAGE);
